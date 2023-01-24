@@ -38,12 +38,12 @@ public class DodgemTest {
 
 
     @Test
-    public void poepleOver12PayDefault() {
+    public void peopleOver12PayDefault() {
         assertEquals(4.50, dodgems.priceFor(visitorAge20And180cm), 0.0);
     }
 
     @Test
-    public void poepleUnder12PayHalf() {
+    public void peopleUnder12PayHalf() {
         assertEquals(2.25, dodgems.priceFor(visitorAge11And140cm), 0.0);
     }
 }

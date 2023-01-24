@@ -7,6 +7,8 @@ import org.junit.Test;
 import people.Visitor;
 import stalls.*;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.*;
 
 public class ThemeParkTest {
@@ -32,20 +34,29 @@ public class ThemeParkTest {
         candyflossStall = new CandyflossStall("Candy Land", "Harry Belafonte", ParkingSpot.A1, 7);
         iceCreamStall = new IceCreamStall("Dream Cones", "Vanilla Ice", ParkingSpot.A4, 10);
         tobaccoStall = new TobaccoStall("Jacks Drum", "Jack Jarvis", ParkingSpot.B1, 3);
-        themePark.addLocation(dodgems);
-        themePark.addLocation(park);
-        themePark.addLocation(playground);
-        themePark.addLocation(rollerCoaster);
-        themePark.addLocation(candyflossStall);
-        themePark.addLocation(iceCreamStall);
-        themePark.addLocation(tobaccoStall);
+        themePark.addAttraction(dodgems);
+        themePark.addAttraction(park);
+        themePark.addAttraction(playground);
+        themePark.addStall(iceCreamStall);
+        themePark.addStall(tobaccoStall);
         visitor = new Visitor(14, 1.2, 40.0);
+    }
 
+    @Test
+    public void canAddAttraction() {
+        themePark.addAttraction(rollerCoaster);
+        assertEquals(4, themePark.getAttractions().size());
+    }
+
+    @Test
+    public void canAddStall() {
+        themePark.addStall(candyflossStall);
+        assertEquals(3, themePark.getStalls().size());
     }
 
     @Test
     public void getAllReviewed() {
-        assertEquals(7, themePark.getAllReviewed().size());
+        assertEquals(5, themePark.getAllReviewed().size());
     }
 
     @Test
@@ -58,5 +69,16 @@ public class ThemeParkTest {
     public void visitAddsAttractionToList() {
         themePark.visit(visitor, rollerCoaster);
         assertEquals(1, visitor.getVisitedAttractions().size());
+    }
+
+    @Test
+    public void getReviews() {
+        HashMap<String, Integer> result = new HashMap<String, Integer>();
+        result.put("Fun Zone", 7);
+        result.put("Bumper Cars", 5);
+        result.put("Jacks Drum", 3);
+        result.put("Leafy Meadows", 9);
+        result.put("Dream Cones", 10);
+        assertEquals(result, themePark.allReviews());
     }
 }
