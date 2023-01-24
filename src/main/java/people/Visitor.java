@@ -1,5 +1,6 @@
 package people;
 
+import attractions.Attraction;
 import behaviours.IReviewed;
 
 import java.util.ArrayList;
