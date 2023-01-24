@@ -9,7 +9,6 @@ public abstract class Stall implements IReviewed {
     private String name;
     private String ownerName;
     private ParkingSpot parkingSpot;
-    private ArrayList<IReviewed> stalls;
     private int rating;
 
 
@@ -17,7 +16,6 @@ public abstract class Stall implements IReviewed {
         this.name = name;
         this.ownerName = ownerName;
         this.parkingSpot = parkingSpot;
-        this.stalls = new ArrayList<IReviewed>();
         this.rating = rating;
     }
 
